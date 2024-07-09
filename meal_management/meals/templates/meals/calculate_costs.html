@@ -1,0 +1,10 @@
+<h1>Cost Calculation</h1>
+<p>Total Meals: {{ total_meals }}</p>
+<p>Total Cost: {{ total_cost }}</p>
+<p>Cost per Meal: {{ cost_per_meal }}</p>
+<h2>Person Costs</h2>
+<ul>
+    {% for person, cost in person_costs.items %}
+    <li>{{ person }}: {{ cost }}</li>
+    {% endfor %}
+</ul>

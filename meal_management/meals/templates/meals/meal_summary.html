@@ -1,0 +1,36 @@
+{% extends 'meals/base.html' %}
+
+{% block title %}Meal Summary{% endblock %}
+
+{% block content %}
+    <h1>Meal Summary</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Person</th>
+                <th>Total Meals</th>
+                <th>Total Cost</th>
+                <th>Person Cost</th>
+                <th>Total Money Given</th>
+                <th>Money Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in summary_data %}
+            <tr>
+                <td>{{ data.person }}</td>
+                <td>{{ data.person_meals }}</td>
+                <td>{{ data.person_costs|floatformat:2 }}</td>
+                <td>{{ data.person_cost|floatformat:2 }}</td>
+                <td>{{ data.total_money_given|floatformat:2 }}</td>
+                <td>{{ data.money_balance|floatformat:2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Cost per meal: {{ cost_per_meal|floatformat:2 }}</p>
+
+    <p>Total Cost: {{ total_cost|floatformat:2 }}</p>
+
+    <p>Money Left in Cash: {{ money_left_in_cash|floatformat:2 }}</p>
+{% endblock %}

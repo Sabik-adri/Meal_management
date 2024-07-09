@@ -1,0 +1,27 @@
+{% extends 'meals/base.html' %}
+
+{% block title %}Person List{% endblock %}
+
+{% block content %}
+<h1>Person List</h1>
+<a href="{% url 'person_create' %}" class="btn btn-primary mb-3">Add Person</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for person in persons %}
+        <tr>
+            <td>{{ person.name }}</td>
+            <td>
+                <a href="{% url 'person_edit' person.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'person_delete' person.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

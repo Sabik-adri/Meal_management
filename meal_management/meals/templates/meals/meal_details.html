@@ -1,0 +1,58 @@
+{% extends 'meals/base.html' %}
+
+{% block title %}Meal Details{% endblock %}
+
+{% block content %}
+    <style>
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2em 0;
+            font-size: 1em;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1em;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+
+    <h1>Meal Details</h1>
+    {% for date, persons in meal_data.items %}
+        <h2>{{ date }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Person</th>
+                    <th>Meals Taken</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for person, meals_taken in persons.items %}
+                <tr>
+                    <td>{{ person.name }}</td>
+                    <td>{{ meals_taken }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'meals/base.html' %}
+
+{% block title %}Delete Person{% endblock %}
+
+{% block content %}
+<h1>Are you sure you want to delete "{{ person.name }}"?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+    <a href="{% url 'person_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
