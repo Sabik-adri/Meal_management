@@ -1,0 +1,9 @@
+{% extends 'meals/base.html' %}
+
+{% block title %}Cannot Delete Person{% endblock %}
+
+{% block content %}
+<h1>Cannot Delete Person</h1>
+<p>Person "{{ person.name }}" cannot be deleted because it has associated meals.</p>
+<a href="{% url 'person_list' %}" class="btn btn-secondary">Go Back</a>
+{% endblock %}

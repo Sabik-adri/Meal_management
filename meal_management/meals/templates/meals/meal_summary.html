@@ -3,7 +3,64 @@
 {% block title %}Meal Summary{% endblock %}
 
 {% block content %}
-    <h1>Meal Summary</h1>
+    <style>
+        .field {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+        .submit {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <div style="display: flex; justify-content: space-between;">
+        <h1>Meal Summary</h1>
+        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+            <form method="GET" action="" style="display: flex; align-items: center;">
+                <select class="field" id="month" name="month">
+                    <option value="">Select Month</option>
+                    <option {% if request.GET.month == "1" %}selected{% endif %} value="1">January</option>
+                    <option {% if request.GET.month == "2" %}selected{% endif %} value="2">February</option>
+                    <option {% if request.GET.month == "3" %}selected{% endif %} value="3">March</option>
+                    <option {% if request.GET.month == "4" %}selected{% endif %} value="4">April</option>
+                    <option {% if request.GET.month == "5" %}selected{% endif %} value="5">May</option>
+                    <option {% if request.GET.month == "6" %}selected{% endif %} value="6">June</option>
+                    <option {% if request.GET.month == "7" %}selected{% endif %} value="7">July</option>
+                    <option {% if request.GET.month == "8" %}selected{% endif %} value="8">August</option>
+                    <option {% if request.GET.month == "9" %}selected{% endif %} value="9">September</option>
+                    <option {% if request.GET.month == "10" %}selected{% endif %} value="10">October</option>
+                    <option {% if request.GET.month == "11" %}selected{% endif %} value="11">November</option>
+                    <option {% if request.GET.month == "12" %}selected{% endif %} value="12">December</option>
+                </select>
+                <select class="field" id="year" name="year">
+                    <option value="">Select Year</option>
+                    <option {% if request.GET.year == "2017" %}selected{% endif %} value="2017">2017</option>
+                    <option {% if request.GET.year == "2018" %}selected{% endif %} value="2018">2018</option>
+                    <option {% if request.GET.year == "2019" %}selected{% endif %} value="2019">2019</option>
+                    <option {% if request.GET.year == "2020" %}selected{% endif %} value="2020">2020</option>
+                    <option {% if request.GET.year == "2021" %}selected{% endif %} value="2021">2021</option>
+                    <option {% if request.GET.year == "2022" %}selected{% endif %} value="2022">2022</option>
+                    <option {% if request.GET.year == "2023" %}selected{% endif %} value="2023">2023</option>
+                    <option {% if request.GET.year == "2024" %}selected{% endif %} value="2024">2024</option>
+                    <option {% if request.GET.year == "2025" %}selected{% endif %} value="2025">2025</option>
+                    <option {% if request.GET.year == "2026" %}selected{% endif %} value="2026">2026</option>
+                    <option {% if request.GET.year == "2027" %}selected{% endif %} value="2027">2027</option>
+                    <option {% if request.GET.year == "2028" %}selected{% endif %} value="2028">2028</option>
+                    <option {% if request.GET.year == "2029" %}selected{% endif %} value="2029">2029</option>
+                </select>
+                <input type="submit" class="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
     <table>
         <thead>
             <tr>

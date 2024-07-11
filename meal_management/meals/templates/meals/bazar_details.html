@@ -1,0 +1,33 @@
+{% extends 'meals/base.html' %}
+
+{% block title %}Bazar Details{% endblock %}
+
+{% block content %}
+    <h1>Bazar Details</h1>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Person</th>
+            <th>Item</th>
+            <th>Money Given</th>
+            <th>Cost</th>
+            <th>Money Left</th>
+        </tr>
+        {% for date, persons_items in bazar_data.items %}
+            {% for person, items in persons_items.items %}
+                {% for item, details in items.items %}
+                    <tr>
+                        <td>{{ date }}</td>
+                        <td>{{ person }}</td>
+                        <td>{{ item }}</td>
+                        <td>{{ details.given_money }}</td>
+                        <td>{{ details.cost }}</td>
+                        <td>{{ details.money_left }}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
