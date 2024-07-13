@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum, Max  # Add this line
 
 class Person(models.Model):
     name = models.CharField(max_length=100)
@@ -20,6 +21,7 @@ class BazarEntry(models.Model):
     serial_number = models.PositiveIntegerField(unique=True, editable=False)
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     money_given = models.DecimalField(max_digits=10, decimal_places=2)
+    money_take_from_cash = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     item = models.CharField(max_length=100)
     cost = models.DecimalField(max_digits=10, decimal_places=2)
     money_left = models.DecimalField(max_digits=10, decimal_places=2, editable=False)
@@ -29,6 +31,8 @@ class BazarEntry(models.Model):
             max_serial = BazarEntry.objects.aggregate(models.Max('serial_number'))['serial_number__max']
             self.serial_number = (max_serial or 0) + 1
         self.money_left = self.money_given - self.cost
+        total_money_left = BazarEntry.objects.aggregate(total_money_left=Sum('money_left'))['total_money_left'] or 0
+        total_money_left -= self.money_take_from_cash
         super().save(*args, **kwargs)
 
     def __str__(self):

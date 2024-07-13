@@ -9,10 +9,9 @@ class MealEntryForm(forms.ModelForm):
 class BazarEntryForm(forms.ModelForm):
     class Meta:
         model = BazarEntry
-        fields = ['date', 'person', 'money_given', 'item', 'cost']
+        fields = ['date', 'person', 'money_given', 'money_take_from_cash', 'item', 'cost']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),
-
         }
 
     def save(self, *args, **kwargs):
